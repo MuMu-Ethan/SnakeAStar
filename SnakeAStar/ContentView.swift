@@ -8,14 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var viewModel = SnakeAStarViewModel()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        MapView()
+            .environment(viewModel)
+            .onAppear {
+                let _ = Timer.scheduledTimer(
+                    withTimeInterval: 0.002,
+                    repeats: true
+                ) { _ in
+                    viewModel.update()
+                }
+            }
     }
 }
 

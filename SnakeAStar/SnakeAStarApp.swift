@@ -12,6 +12,8 @@ struct SnakeAStarApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .windowResizeBehavior(.disabled)
         }
+        .windowResizability(.contentSize)
     }
 }
